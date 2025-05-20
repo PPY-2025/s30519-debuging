@@ -1,9 +1,22 @@
 # Zadanie 1
 # 0! = 1, dlatego return 0; był nieprawidłowy.
+import unittest
+
+
 def factorial(n):
     if n == 0:
         return 1
     return n * factorial(n - 1)
+
+class TestFactorial(unittest.TestCase):
+    def test_factorial_zero(self):
+        self.assertEqual(factorial(0), 1)
+
+    def test_factorial_three(self):
+        self.assertEqual(factorial(3), 6)
+
+    def test_factorial_five(self):
+        self.assertEqual(factorial(5), 120)
 
 # Zadanie 2
 # "3" złe, używamy liczb (metody spodziewają się inta, nie ma implementacji castowania string na int),
@@ -104,3 +117,6 @@ def simulate_battle():
     print("End:", w.hp, m.hp)
 
 simulate_battle()
+
+if __name__ == "__main__":
+    unittest.main()
