@@ -66,8 +66,10 @@ class Character:
         self.hp = hp
 
     def take_damage(self, amount):
-        if not isinstance(amount, (int, float)):
-            raise TypeError(f"Invalid damage type: {type(amount)}. Must be int or float.")
+        try:
+            amount = int(amount)
+        except ValueError:
+            raise ValueError(f"Nie można przekonwertować '{amount}' na liczbę typu int")
 
         self.hp = self.hp - amount
         if self.hp < 0:
